@@ -1,61 +1,39 @@
-function createPromise(time, value) {
+function createPromise(position, delay) {
+  const shouldResolve = Math.random() > 0.3;
+
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (time <= 2000) {
-        resolve({ position: time, value });
+      if (shouldResolve) {
+        resolve({ position, delay });
       } else {
-        reject({ position: time, value });
+        reject({ position, delay });
       }
-    }, time);
+    }, delay);
   });
 }
 
-Notiflix.Notify.init({
-  width: '280px',
-  position: 'right-top',
-  distance: '10px',
-  opacity: 1,
-  borderRadius: '5px',
-  rtl: false,
-  timeout: 3000,
-  messageMaxLength: 110,
-  backOverlay: false,
-  backOverlayColor: 'rgba(0,0,0,0.5)',
-  plainText: true,
-  showOnlyTheLastOne: false,
-  clickToClose: false,
-  ID: 'NotiflixNotify',
-  className: 'notiflix-notify',
-  zindex: 4001,
-  useGoogleFont: false,
-  fontFamily: 'Quicksand',
-  fontSize: '13px',
-  cssAnimation: true,
-  cssAnimationDuration: 400,
-  cssAnimationStyle: 'fade',
-  closeButton: false,
-  useIcon: true,
-  useFontAwesome: false,
-});
+function generatePromises() {
+  const amount = parseInt(document.getElementById('amount').value, 10);
+  const initialDelay = parseInt(
+    document.getElementById('initialDelay').value,
+    10
+  );
+  const step = parseInt(document.getElementById('step').value, 10);
 
-function callCreatePromise() {
-  const delayInput = document.getElementById('delay');
-  const amountInput = document.getElementById('amount');
+  for (let i = 1; i <= amount; i++) {
+    const position = i;
+    const delay = initialDelay + (i - 1) * step;
 
-  const delay = parseInt(delayInput.value);
-  const amount = parseInt(amountInput.value);
-
-  for (let i = 0; i < amount; i++) {
-    const promise = createPromise(delay * i, delay * (i + 1));
-
-    promise
-      .then(({ position, value }) => {
-        Notiflix.Notify.success(`Fulfilled promise ${position} in ${value}ms`);
+    createPromise(position, delay)
+      .then(({ position, delay }) => {
+        Notiflix.Notify.Success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
       })
-      .catch(({ position, value }) => {
-        Notiflix.Notify.failure(`Rejected promise ${position} in ${value}ms`);
+      .catch(({ position, delay }) => {
+        Notiflix.Notify.Failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
       });
   }
 }
-
-document.getElementById('start').addEventListener('click', callCreatePromise);
