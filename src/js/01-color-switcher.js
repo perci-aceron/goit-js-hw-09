@@ -20,4 +20,4 @@ function stop() {
 
 document.querySelector('[data-start]').addEventListener('click', start);
 document.querySelector('[data-stop]').addEventListener('click', stop);
-document.querySelector('[data-start]').click();
+
