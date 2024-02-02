@@ -4,25 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Color switcher</title>
-    <script>
-      function getRandomHexColor() {
-        return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
-      }
-
-      let intervalId;
-
-      function start() {
-        document.getElementById("start").disabled = true;
-        intervalId = setInterval(() => {
-          document.body.style.backgroundColor = getRandomHexColor();
-        }, 1000);
-      }
-
-      function stop() {
-        clearInterval(intervalId);
-        document.getElementById("start").disabled = false;
-      }
-    </script>
     <link rel="stylesheet" href="css/common.css" />
   </head>
   <body>
