@@ -15,6 +15,7 @@ function start() {
   intervalId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
+  document.querySelector('[data-start]').click();
 }
 
 function stop() {
@@ -23,8 +24,5 @@ function stop() {
   intervalId = null;
 }
 
-  document.querySelector('[data-start]').addEventListener('click', start);
-  document.querySelector('[data-stop]').addEventListener('click', stop);
-
-  start();
-  
+document.querySelector('[data-start]').addEventListener('click', start);
+document.querySelector('[data-stop]').addEventListener('click', stop);
