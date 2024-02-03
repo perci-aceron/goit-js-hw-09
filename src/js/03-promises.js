@@ -1,16 +1,18 @@
 import Notiflix from 'notiflix';
 
-document
-  .getElementById('promisesForm')
-  .addEventListener('submit', function (event) {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+  document
+    .getElementById('promisesForm')
+    .addEventListener('submit', function (event) {
+      event.preventDefault();
 
-    const delay = parseInt(document.getElementsByName('delay')[0].value);
-    const step = parseInt(document.getElementsByName('step')[0].value);
-    const amount = parseInt(document.getElementsByName('amount')[0].value);
+      const delay = parseInt(document.getElementsByName('delay')[0].value);
+      const step = parseInt(document.getElementsByName('step')[0].value);
+      const amount = parseInt(document.getElementsByName('amount')[0].value);
 
-    createPromises(amount, delay, step);
-  });
+      createPromises(amount, delay, step);
+    });
+});
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
