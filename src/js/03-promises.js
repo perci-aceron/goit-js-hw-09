@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notify from 'notiflix/build/notiflix-notify-aio';
 
 document
   .getElementById('promisesForm')
