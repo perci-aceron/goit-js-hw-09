@@ -1,5 +1,11 @@
 import Notiflix from 'notiflix';
 
+Notiflix.Init({
+  useGoogleFont: false,
+  fontFamily: 'Roboto',
+  timeout: 3000,
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   document
     .getElementById('promisesForm')
