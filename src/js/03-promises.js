@@ -9,7 +9,7 @@ document
     const step = parseInt(document.getElementsByName('step')[0].value);
     const amount = parseInt(document.getElementsByName('amount')[0].value);
 
-    createPromises(amount, delay, step, showSuccess, showFailure);
+    createPromises(amount, delay, step);
   });
 
 function createPromise(position, delay) {
@@ -26,31 +26,16 @@ function createPromise(position, delay) {
   });
 }
 
-function createPromises(
-  amount,
-  firstDelay,
-  step,
-  successCallback,
-  failureCallback
-) {
+function createPromises(amount, firstDelay, step) {
   for (let i = 1; i <= amount; i++) {
     const currentDelay = firstDelay + (i - 1) * step;
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        successCallback(`Fulfilled promise ${position} in ${delay}ms`);
+        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        failureCallback(`Rejected promise ${position} in ${delay}ms`);
+        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
-}
-
-// Custom success and failure callback functions
-function showSuccess(message) {
-  Notify.Success(message);
-}
-
-function showFailure(message) {
-  Notify.Failure(message);
 }
