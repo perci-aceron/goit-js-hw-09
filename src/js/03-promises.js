@@ -1,11 +1,3 @@
-import Notiflix from 'notiflix';
-
-Notiflix.Init({
-  useGoogleFont: false,
-  fontFamily: 'Roboto',
-  timeout: 3000,
-});
-
 document
   .getElementById('promisesForm')
   .addEventListener('submit', function (event) {
@@ -38,14 +30,12 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.Success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`
-        );
+        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        // You can update the UI or handle success in a different way
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.Failure(
-          `❌ Rejected promise ${position} in ${delay}ms`
-        );
+        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        // You can update the UI or handle failure in a different way
       });
   }
 }
