@@ -32,10 +32,10 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.Success(`Fulfilled promise ${position} in ${delay}ms`);
+        Notify.Success(`Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.Failure(`Rejected promise ${position} in ${delay}ms`);
+        Notify.Failure(`Rejected promise ${position} in ${delay}ms`);
       });
   }
 }
