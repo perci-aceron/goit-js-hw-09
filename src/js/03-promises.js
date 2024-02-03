@@ -35,13 +35,12 @@ function createPromises(amount, firstDelay, step) {
         Notiflix.Notify.Success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
         );
-        // You can add additional logic here if needed
+        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
         Notiflix.Notify.Failure(
           `❌ Rejected promise ${position} in ${delay}ms`
         );
-        // You can add additional logic here if needed
       });
   }
 }
