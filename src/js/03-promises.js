@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-Notify.init({
+Notiflix.Notify.init({
   width: '300px',
   position: 'right-bottom',
   closeButton: false,
