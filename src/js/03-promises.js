@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 
 Notiflix.Notify.init({
   width: '300px',
@@ -38,10 +38,10 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        Notify.Success(`Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.Success(`Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notify.Failure(`Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.Failure(`Rejected promise ${position} in ${delay}ms`);
       });
   }
 }
