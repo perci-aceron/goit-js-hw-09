@@ -1,12 +1,6 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 
-// Initialize Notiflix Notify
-Notify.Init({
-  className: 'notiflix-notify', // Customize the class name
-  position: 'center', // Set the notification position
-  timeout: 3000, // Set the notification display duration (in milliseconds)
-  // Other options...
-});
+Notify.Init();
 
 document.addEventListener('DOMContentLoaded', () => {
   document
