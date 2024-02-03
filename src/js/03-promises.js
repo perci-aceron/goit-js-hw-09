@@ -1,9 +1,21 @@
 import Notiflix from 'notiflix';
 
-function createPromise(position, delay) {
-  const shouldResolve = Math.random() > 0.3;
+document
+  .getElementById('promisesForm')
+  .addEventListener('submit', function (event) {
+    event.preventDefault();
 
+    const delay = parseInt(document.getElementsByName('delay')[0].value);
+    const step = parseInt(document.getElementsByName('step')[0].value);
+    const amount = parseInt(document.getElementsByName('amount')[0].value);
+
+    createPromises(amount, delay, step);
+  });
+
+function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
+    const shouldResolve = Math.random() > 0.3;
+
     setTimeout(() => {
       if (shouldResolve) {
         resolve({ position, delay });
@@ -14,19 +26,11 @@ function createPromise(position, delay) {
   });
 }
 
-function generatePromises() {
-  const amount = parseInt(document.getElementById('amount').value, 10);
-  const initialDelay = parseInt(
-    document.getElementById('initialDelay').value,
-    10
-  );
-  const step = parseInt(document.getElementById('step').value, 10);
-
+function createPromises(amount, firstDelay, step) {
   for (let i = 1; i <= amount; i++) {
-    const position = i;
-    const delay = initialDelay + (i - 1) * step;
+    const currentDelay = firstDelay + (i - 1) * step;
 
-    createPromise(position, delay)
+    createPromise(i, currentDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.Success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
