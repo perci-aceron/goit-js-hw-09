@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 document
   .getElementById('promisesForm')
   .addEventListener('submit', function (event) {
@@ -30,12 +32,16 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-        // You can update the UI or handle success in a different way
+        Notiflix.Notify.Success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
+        // You can add additional logic here if needed
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-        // You can update the UI or handle failure in a different way
+        Notiflix.Notify.Failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
+        // You can add additional logic here if needed
       });
   }
 }
