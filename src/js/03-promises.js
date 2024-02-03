@@ -1,10 +1,4 @@
-import Notiflix from 'notiflix';
-
-Notiflix.Notify.init({
-  width: '300px',
-  position: 'right-bottom',
-  closeButton: false,
-});
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 document
   .getElementById('promisesForm')
