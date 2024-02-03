@@ -32,10 +32,10 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notify(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notify(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
 }
