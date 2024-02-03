@@ -1,4 +1,12 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+// Initialize Notiflix Notify
+Notify.Init({
+  className: 'notiflix-notify', // Customize the class name
+  position: 'center', // Set the notification position
+  timeout: 3000, // Set the notification display duration (in milliseconds)
+  // Other options...
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   document
@@ -34,14 +42,10 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.Success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`
-        );
+        Notiflix.Notify.Success('✅ Fulfilled promise 1 in 1000ms');
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.Failure(
-          `❌ Rejected promise ${position} in ${delay}ms`
-        );
+        Notiflix.Notify.Failure('❌ Rejected promise 2 in 2000ms');
       });
   }
 }
