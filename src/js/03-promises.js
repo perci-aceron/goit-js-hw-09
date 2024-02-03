@@ -1,20 +1,16 @@
 import Notiflix from 'notiflix';
 
-Notify.Init();
+document
+  .getElementById('promisesForm')
+  .addEventListener('submit', function (event) {
+    event.preventDefault();
 
-document.addEventListener('DOMContentLoaded', () => {
-  document
-    .getElementById('promisesForm')
-    .addEventListener('submit', function (event) {
-      event.preventDefault();
+    const delay = parseInt(document.getElementsByName('delay')[0].value);
+    const step = parseInt(document.getElementsByName('step')[0].value);
+    const amount = parseInt(document.getElementsByName('amount')[0].value);
 
-      const delay = parseInt(document.getElementsByName('delay')[0].value);
-      const step = parseInt(document.getElementsByName('step')[0].value);
-      const amount = parseInt(document.getElementsByName('amount')[0].value);
-
-      createPromises(amount, delay, step);
-    });
-});
+    createPromises(amount, delay, step);
+  });
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -36,10 +32,14 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.Success('✅ Fulfilled promise 1 in 1000ms');
+        Notiflix.Notify.Success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.Failure('❌ Rejected promise 2 in 2000ms');
+        Notiflix.Notify.Failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
       });
   }
 }
