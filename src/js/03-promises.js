@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 
+// Initialize Notiflix with your preferred configuration
 Notiflix.Init({
   useGoogleFont: false,
   fontFamily: 'Roboto',
