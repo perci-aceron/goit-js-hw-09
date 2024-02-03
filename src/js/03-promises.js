@@ -1,10 +1,4 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-Notify.init({
-  width: '300px',
-  position: 'right-bottom',
-  closeButton: false,
-});
+import Notiflix from 'notiflix';
 
 document
   .getElementById('promisesForm')
@@ -38,10 +32,14 @@ function createPromises(amount, firstDelay, step) {
 
     createPromise(i, currentDelay)
       .then(({ position, delay }) => {
-        Notify(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
       })
       .catch(({ position, delay }) => {
-        Notify(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
       });
   }
 }
